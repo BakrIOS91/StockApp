@@ -1,3 +1,10 @@
+//
+//  AppEnvironments.swift
+//  StockApp
+//
+//  Created by Bakr Mohamed on 24/03/2026.
+//
+
 import Foundation
 
 enum AppEnvironments {

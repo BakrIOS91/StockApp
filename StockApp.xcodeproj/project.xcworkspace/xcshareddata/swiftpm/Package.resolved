@@ -1,5 +1,5 @@
 {
-  "originHash" : "304226586e7289955aeb114b5e15bd7d28e4a873124b82a9e82e70b10edb522f",
+  "originHash" : "51160d1bc703d32f0012963936610fe842a99fe64f6105c60040508cae645246",
   "pins" : [
     {
       "identity" : "bmswiftnetworking",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "eb5431321b9d915986c4393ac9385660037c97e4",
         "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "loaderui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ninjaprox/LoaderUI",
+      "state" : {
+        "revision" : "1b8ad2dfb06080ffcc51a74da0aeba56a0f7b877",
+        "version" : "0.2.1"
       }
     },
     {
