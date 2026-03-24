@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3C14C4A12F72D5D80067FA43 /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C14C4A02F72D5D80067FA43 /* BMSwiftUI */; };
+		3C14C4A42F72D5EB0067FA43 /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3C14C4A32F72D5EB0067FA43 /* BMSwiftNetworking */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		3CE92BE52F72C6F200B05D1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +34,22 @@
 		3CE92BEE2F72C6F200B05D1D /* StockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3C14C49E2F72D3C30067FA43 /* Exceptions for "StockApp" folder in "StockApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				App/Info.plist,
+			);
+			target = 3CE92BD62F72C6F100B05D1D /* StockApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3CE92BD92F72C6F100B05D1D /* StockApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3C14C49E2F72D3C30067FA43 /* Exceptions for "StockApp" folder in "StockApp" target */,
+			);
 			path = StockApp;
 			sourceTree = "<group>";
 		};
@@ -52,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C14C4A12F72D5D80067FA43 /* BMSwiftUI in Frameworks */,
+				3C14C4A42F72D5EB0067FA43 /* BMSwiftNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,8 @@
 			);
 			name = StockApp;
 			packageProductDependencies = (
+				3C14C4A02F72D5D80067FA43 /* BMSwiftUI */,
+				3C14C4A32F72D5EB0067FA43 /* BMSwiftNetworking */,
 			);
 			productName = StockApp;
 			productReference = 3CE92BD72F72C6F100B05D1D /* StockApp.app */;
@@ -195,6 +217,10 @@
 			);
 			mainGroup = 3CE92BCE2F72C6F100B05D1D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3C14C49F2F72D5D80067FA43 /* XCRemoteSwiftPackageReference "BMSwiftUI" */,
+				3C14C4A22F72D5EB0067FA43 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3CE92BD82F72C6F100B05D1D /* Products */;
 			projectDirPath = "";
@@ -398,6 +424,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StockApp/App/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -418,7 +445,8 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -442,6 +470,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StockApp/App/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -462,7 +491,8 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -615,6 +645,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C14C49F2F72D5D80067FA43 /* XCRemoteSwiftPackageReference "BMSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BakrIOS91/BMSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+		3C14C4A22F72D5EB0067FA43 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BakrIOS91/BMSwiftNetworking";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C14C4A02F72D5D80067FA43 /* BMSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C14C49F2F72D5D80067FA43 /* XCRemoteSwiftPackageReference "BMSwiftUI" */;
+			productName = BMSwiftUI;
+		};
+		3C14C4A32F72D5EB0067FA43 /* BMSwiftNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C14C4A22F72D5EB0067FA43 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */;
+			productName = BMSwiftNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3CE92BCF2F72C6F100B05D1D /* Project object */;
 }
