@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C14C4A12F72D5D80067FA43 /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C14C4A02F72D5D80067FA43 /* BMSwiftUI */; };
-		3C14C4A42F72D5EB0067FA43 /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3C14C4A32F72D5EB0067FA43 /* BMSwiftNetworking */; };
 		3C14C4D92F72F40D0067FA43 /* LoaderUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C14C4D82F72F40D0067FA43 /* LoaderUI */; };
+		3C278A3E2F75B27000EA653A /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A3D2F75B27000EA653A /* BMSwiftNetworking */; };
+		3C278A412F75BB8100EA653A /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A402F75BB8100EA653A /* BMSwiftUI */; };
+		3C278A462F75C21300EA653A /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A452F75C21300EA653A /* BMSwiftNetworking */; };
+		3C278A492F75C22600EA653A /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A482F75C22600EA653A /* BMSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +60,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C14C4A12F72D5D80067FA43 /* BMSwiftUI in Frameworks */,
+				3C278A3E2F75B27000EA653A /* BMSwiftNetworking in Frameworks */,
+				3C278A462F75C21300EA653A /* BMSwiftNetworking in Frameworks */,
+				3C278A412F75BB8100EA653A /* BMSwiftUI in Frameworks */,
+				3C278A492F75C22600EA653A /* BMSwiftUI in Frameworks */,
 				3C14C4D92F72F40D0067FA43 /* LoaderUI in Frameworks */,
-				3C14C4A42F72D5EB0067FA43 /* BMSwiftNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,9 +116,11 @@
 			);
 			name = StockApp;
 			packageProductDependencies = (
-				3C14C4A02F72D5D80067FA43 /* BMSwiftUI */,
-				3C14C4A32F72D5EB0067FA43 /* BMSwiftNetworking */,
 				3C14C4D82F72F40D0067FA43 /* LoaderUI */,
+				3C278A3D2F75B27000EA653A /* BMSwiftNetworking */,
+				3C278A402F75BB8100EA653A /* BMSwiftUI */,
+				3C278A452F75C21300EA653A /* BMSwiftNetworking */,
+				3C278A482F75C22600EA653A /* BMSwiftUI */,
 			);
 			productName = StockApp;
 			productReference = 3CE92BD72F72C6F100B05D1D /* StockApp.app */;
@@ -172,9 +178,9 @@
 			mainGroup = 3CE92BCE2F72C6F100B05D1D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				3C14C49F2F72D5D80067FA43 /* XCRemoteSwiftPackageReference "BMSwiftUI" */,
-				3C14C4A22F72D5EB0067FA43 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */,
 				3C14C4D72F72F40D0067FA43 /* XCRemoteSwiftPackageReference "LoaderUI" */,
+				3C278A442F75C21300EA653A /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */,
+				3C278A472F75C22600EA653A /* XCRemoteSwiftPackageReference "BMSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3CE92BD82F72C6F100B05D1D /* Products */;
@@ -525,22 +531,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3C14C49F2F72D5D80067FA43 /* XCRemoteSwiftPackageReference "BMSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/BakrIOS91/BMSwiftUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
-			};
-		};
-		3C14C4A22F72D5EB0067FA43 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/BakrIOS91/BMSwiftNetworking";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.1;
-			};
-		};
 		3C14C4D72F72F40D0067FA43 /* XCRemoteSwiftPackageReference "LoaderUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/LoaderUI";
@@ -549,23 +539,47 @@
 				minimumVersion = 0.2.1;
 			};
 		};
+		3C278A442F75C21300EA653A /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BakrIOS91/BMSwiftNetworking";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.4;
+			};
+		};
+		3C278A472F75C22600EA653A /* XCRemoteSwiftPackageReference "BMSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BakrIOS91/BMSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3C14C4A02F72D5D80067FA43 /* BMSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3C14C49F2F72D5D80067FA43 /* XCRemoteSwiftPackageReference "BMSwiftUI" */;
-			productName = BMSwiftUI;
-		};
-		3C14C4A32F72D5EB0067FA43 /* BMSwiftNetworking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3C14C4A22F72D5EB0067FA43 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */;
-			productName = BMSwiftNetworking;
-		};
 		3C14C4D82F72F40D0067FA43 /* LoaderUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3C14C4D72F72F40D0067FA43 /* XCRemoteSwiftPackageReference "LoaderUI" */;
 			productName = LoaderUI;
+		};
+		3C278A3D2F75B27000EA653A /* BMSwiftNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BMSwiftNetworking;
+		};
+		3C278A402F75BB8100EA653A /* BMSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BMSwiftUI;
+		};
+		3C278A452F75C21300EA653A /* BMSwiftNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C278A442F75C21300EA653A /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */;
+			productName = BMSwiftNetworking;
+		};
+		3C278A482F75C22600EA653A /* BMSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C278A472F75C22600EA653A /* XCRemoteSwiftPackageReference "BMSwiftUI" */;
+			productName = BMSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

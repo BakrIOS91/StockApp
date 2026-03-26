@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
+import BMSwiftNetworking
 
 @main
 struct StockApp: App {
+    
+    init () {
+        NetworkMonitor.shared.startMonitoring()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StockListView(
+                viewModel: .init()
+            )
         }
     }
 }

@@ -20,4 +20,9 @@ enum Localized {
     
     static let errorUnexpectedTitle = String(localized: "error_unexpected_title")
     static let errorUnexpectedDescription = String(localized: "error_unexpected_description")
+    
+    static let stockTitle = String(localized: "stock_title")
+    static let totalInvestmentTitle = String(localized: "total_investment_title")
+    static let searchPlaceholder = String(localized: "search_placeholder")
+
 }

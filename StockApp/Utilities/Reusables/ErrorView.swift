@@ -46,8 +46,9 @@ struct ErrorView: View {
                         if let title = title {
                             Text(title)
                                 .textStyle(
-                                    fontWeight: .bold,
-                                    size: 24
+                                    weight: .bold,
+                                    size: 24,
+                                    color: .appBlack
                                 )
                                 .multilineTextAlignment(.center)
                         }
@@ -56,7 +57,7 @@ struct ErrorView: View {
                 
                 Text(message)
                     .textStyle(
-                        fontWeight: .regular,
+                        weight: .regular,
                         size: 14,
                         color: .descriptionGrayColor
                     )
@@ -73,9 +74,9 @@ struct ErrorView: View {
                             
                             Text(buttonText)
                                 .textStyle(
-                                    fontWeight: .regular,
+                                    weight: .regular,
                                     size: 14,
-                                    color: .white
+                                    color: .appWhite
                                 )
                             Spacer()
                         }
