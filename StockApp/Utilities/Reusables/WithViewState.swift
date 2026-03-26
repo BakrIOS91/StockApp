@@ -30,7 +30,7 @@ struct WithViewState<Content: View>: View {
     
     var body: some View {
         ZStack {
-            Color.appMainBackground.ignoresSafeArea()
+            Color.appWhite.ignoresSafeArea()
             content()
                 .refreshable {
                     retryAction()
@@ -113,6 +113,7 @@ struct WithViewState<Content: View>: View {
             
             BallPulseSync()
                 .foregroundStyle(Color.appPrimaryColor)
+                .setFrame(width: 60)
             
             Spacer()
         }

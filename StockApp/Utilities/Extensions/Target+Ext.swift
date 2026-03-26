@@ -8,7 +8,7 @@
 import BMSwiftNetworking
 
 extension ModelTargetType {
-    public var headers: [String : String]? {
+    public var headers: [String : String] {
         return [
             "x-rapidapi-host": AppEnvironments.apiHost,
             "x-rapidapi-key": AppEnvironments.apiKey

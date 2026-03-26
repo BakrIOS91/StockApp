@@ -7,7 +7,9 @@
 
 import BMSwiftNetworking
 
-final class AppTarget: Target {
+struct AppTarget: Target {
+    static var shared = AppTarget()
+    
     var appEnvironment: AppEnvironment = .development
     
     var kAppHost: String {

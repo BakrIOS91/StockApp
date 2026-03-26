@@ -1,72 +1,86 @@
-//
-//  AppFont.swift
-//  StockApp
-//
-//  Created by Bakr Mohamed on 24/03/2026.
-//
-
 import SwiftUI
 import BMSwiftUI
 
-enum FontWeight: String {
-    case bold
-    case regular
-    case medium
+#if os(iOS)
+import UIKit
+#endif
+
+// MARK: - Font Weight
+public enum FontWeight: String {
+    case bold = "Bold"
+    case regular = "Regular"
+    case medium = "Medium"
     
     var suffix: String {
+        self.rawValue
+    }
+}
+
+// MARK: - Font Helper
+public enum FontHelper {
+    public static func fontName() -> String {
+        "OpenSans"
+    }
+    
+    public static func fontWeight(for weight: FontWeight) -> String {
+        weight.suffix
+    }
+    
+    #if os(iOS)
+    public static func font(size: CGFloat, weight: FontWeight, color: Color) -> (UIFont, UIColor) {
+        // Since OpenSans is not found, we use system font as fallback
+        let font = UIFont(name: "\(fontName())-\(weight.suffix)", size: size) ?? .systemFont(ofSize: size, weight: weight.uiWeight)
+        return (font, color.uiColor)
+    }
+    #endif
+}
+
+#if os(iOS)
+extension FontWeight {
+    var uiWeight: UIFont.Weight {
         switch self {
-        case .bold: return "Bold"
-        case .regular: return "Regular"
-        case .medium: return "Medium"
+        case .bold: return .bold
+        case .regular: return .regular
+        case .medium: return .medium
         }
     }
 }
+#endif
 
-@MainActor
-struct FontHelper {
-    static func font(size: CGFloat, weight: FontWeight, color: Color) -> (font: UIFont, color: UIColor) {
-        let fontName = "OpenSans-\(weight.suffix)"
-        let scalingFactor = DeviceHelper.getScalingFactor()
-        let fontSize = size * scalingFactor
-        let customFont = UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: size)
-        return (font: customFont, color: color.uiColor)
-    }
-    
-    static func fontName() -> String {
-        return "OpenSans"
-    }
-    
-    static func fontWeight(for weight: FontWeight) -> String {
-        return weight.suffix
-    }
-}
-
+// MARK: - View Modifier
 struct TextStyleModifier: ViewModifier {
-    let fontWeight: FontWeight
+    
+    let weight: Font.Weight
     let size: CGFloat
     let color: Color
-    let fontName: String
-    
-    init(fontWeight: FontWeight, size: CGFloat, color: Color) {
-        self.size = size
-        self.fontWeight = fontWeight
-        self.color = color
-        self.fontName = "OpenSans-\(fontWeight.suffix)"
-    }
     
     func body(content: Content) -> some View {
         content
-            .font(.custom(fontName, size: size))
+            .font(.system(size: size, weight: weight))
             .foregroundColor(color)
     }
 }
 
-
+// MARK: - View Extension
 extension View {
-    func textStyle(fontWeight: FontWeight = .regular, size: CGFloat = 16, color: Color = .appBlack) -> some View {
+    
+    func textStyle(
+        weight: Font.Weight = .regular,
+        size: CGFloat = 16,
+        color: Color = .appBlack
+    ) -> some View {
+        
         let scalingFactor = DeviceHelper.getScalingFactor()
         let fontSize = size * scalingFactor
-        return self.modifier(TextStyleModifier(fontWeight: fontWeight, size: fontSize, color: color))
-                    .dynamicTypeSize(.small ... .xxxLarge)
+        
+        return self
+            .modifier(
+                TextStyleModifier(
+                    weight: weight,
+                    size: fontSize,
+                    color: color
+                )
+            )
+            .dynamicTypeSize(.small ... .xxxLarge)
     }
 }

@@ -1,13 +1,13 @@
 {
-  "originHash" : "51160d1bc703d32f0012963936610fe842a99fe64f6105c60040508cae645246",
+  "originHash" : "a156a24d22c37ef1f889ab83a9522f31a17217d2c1a070f4f9a4c08c1adc3a33",
   "pins" : [
     {
       "identity" : "bmswiftnetworking",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BakrIOS91/BMSwiftNetworking",
       "state" : {
-        "revision" : "37a465f309ef700ff23675b017f2452718b4472f",
-        "version" : "0.2.1"
+        "revision" : "231e2e1b4ea1d6f843b222efee574f12669fef22",
+        "version" : "0.2.4"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BakrIOS91/BMSwiftUI",
       "state" : {
-        "revision" : "eb5431321b9d915986c4393ac9385660037c97e4",
-        "version" : "0.3.0"
+        "revision" : "2102ef1161a6642f34186e3f2298feeb1d10f33e",
+        "version" : "0.3.2"
       }
     },
     {
