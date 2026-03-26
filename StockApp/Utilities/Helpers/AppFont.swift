@@ -1,12 +1,51 @@
-//
-//  AppFont.swift
-//  StockApp
-//
-//  Created by Bakr Mohamed on 24/03/2026.
-//
-
 import SwiftUI
 import BMSwiftUI
+
+#if os(iOS)
+import UIKit
+#endif
+
+// MARK: - Font Weight
+public enum FontWeight: String {
+    case bold = "Bold"
+    case regular = "Regular"
+    case medium = "Medium"
+    
+    var suffix: String {
+        self.rawValue
+    }
+}
+
+// MARK: - Font Helper
+public enum FontHelper {
+    public static func fontName() -> String {
+        "OpenSans"
+    }
+    
+    public static func fontWeight(for weight: FontWeight) -> String {
+        weight.suffix
+    }
+    
+    #if os(iOS)
+    public static func font(size: CGFloat, weight: FontWeight, color: Color) -> (UIFont, UIColor) {
+        // Since OpenSans is not found, we use system font as fallback
+        let font = UIFont(name: "\(fontName())-\(weight.suffix)", size: size) ?? .systemFont(ofSize: size, weight: weight.uiWeight)
+        return (font, color.uiColor)
+    }
+    #endif
+}
+
+#if os(iOS)
+extension FontWeight {
+    var uiWeight: UIFont.Weight {
+        switch self {
+        case .bold: return .bold
+        case .regular: return .regular
+        case .medium: return .medium
+        }
+    }
+}
+#endif
 
 // MARK: - View Modifier
 struct TextStyleModifier: ViewModifier {
