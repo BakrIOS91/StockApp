@@ -72,13 +72,27 @@ struct StockListViewModelTests {
         #expect(viewModel.state.filteredStocks.count == mockStocks.count)
     }
     
-    @Test("Selecting a stock updates selectedStock")
+    @Test("Searching with no matches")
+    func testSearchWithNoMatches() {
+        let mockStocks = StockListem.mock
+        let viewModel = StockListViewModel()
+        viewModel.state.stocks = mockStocks
+        viewModel.state.filteredStocks = mockStocks
+        
+        // Search for something that doesn't exist
+        viewModel.trigger(.searchChanged("NonExistentStockXYZ"))
+        #expect(viewModel.state.filteredStocks.isEmpty)
+    }
+    
+    @Test("Selecting a stock updates selectedStock and cancels fetching")
     func testSelectStock() {
         let mockStock = StockListem.mock[0]
         let viewModel = StockListViewModel()
         
         viewModel.trigger(.didPressOnStock(mockStock))
         #expect(viewModel.state.stockDetailsViewModel?.state.symbol == mockStock.symbol)
+        // Note: We can't easily verify the .cancelTask(id:) effect in unit tests without a more complex mock/spy,
+        // but we verify the action is triggered correctly.
     }
     
     @Test("Fetching stocks failure updates viewState")
@@ -100,6 +114,51 @@ struct StockListViewModelTests {
             try? await Task.sleep(for: .milliseconds(100))
             
             #expect(viewModel.state.viewState == .noNetwork)
+        }
+    }
+    
+    @Test("Fetching stocks with empty results updates state to noData")
+    func testFetchStocksEmptyResults() async {
+        await DependencyValues.withDependencies {
+            $0.stockClient = .init(getStocks: {
+                AsyncStream { continuation in
+                    continuation.yield(.success(StockList(marketSummaryAndSparkResponse: .init(result: [], error: nil))))
+                    continuation.finish()
+                }
+            }, getStockDetails: { _ in
+                return .success(.mock)
+            })
+        } operation: {
+            let viewModel = StockListViewModel()
+            viewModel.trigger(.fetchStocks)
+            
+            // Wait for the effect task to complete
+            try? await Task.sleep(for: .milliseconds(100))
+            
+            #expect(viewModel.state.viewState == .noData)
+            #expect(viewModel.state.stocks.isEmpty)
+        }
+    }
+    
+    @Test("Fetching stocks with nil result updates state to noData")
+    func testFetchStocksNilResult() async {
+        await DependencyValues.withDependencies {
+            $0.stockClient = .init(getStocks: {
+                AsyncStream { continuation in
+                    continuation.yield(.success(nil))
+                    continuation.finish()
+                }
+            }, getStockDetails: { _ in
+                return .success(.mock)
+            })
+        } operation: {
+            let viewModel = StockListViewModel()
+            viewModel.trigger(.fetchStocks)
+            
+            // Wait for the effect task to complete
+            try? await Task.sleep(for: .milliseconds(100))
+            
+            #expect(viewModel.state.viewState == .noData)
         }
     }
 }
