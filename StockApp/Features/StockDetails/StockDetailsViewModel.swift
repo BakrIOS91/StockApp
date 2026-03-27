@@ -1,10 +1,3 @@
-//
-//  StockDetailsViewModel.swift
-//  StockApp
-//
-//  Created by Bakr Mohamed on 27/03/2026.
-//
-
 import Foundation
 import BMSwiftUI
 import BMSwiftNetworking

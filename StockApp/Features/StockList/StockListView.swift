@@ -1,10 +1,3 @@
-//
-//  StockListView.swift
-//  StockApp
-//
-//  Created by Bakr Mohamed on 24/03/2026.
-//
-
 import SwiftUI
 import BMSwiftUI
 
@@ -14,60 +7,9 @@ struct StockListView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 20) {
-                ZStack {
-                    Color.appBlack
-                    
-                    VStack(spacing: 20) {
-                        Text(Localized.totalInvestmentTitle)
-                            .textStyle(
-                                weight: .regular,
-                                size: 16,
-                                color: .appWhite
-                            )
-                        
-                        Text("$100,000.00")
-                            .textStyle(
-                                weight: .bold,
-                                size: 24,
-                                color: .appWhite
-                            )
-                    }
-                }
-                .setFrame(height: 200)
-                .setCornerRadius(50, corners: [.bottomLeft, .bottomRight])
+                headerSection
                 
-                
-                VStack(alignment:.leading){
-                    Text(Localized.stockTitle)
-                        .textStyle(
-                            weight: .bold,
-                            size: 24,
-                            color: .appBlack
-                        )
-                    
-                    WithViewState(viewState: $viewModel.state.viewState,isRefreshable: true) {
-                        VStack(spacing: 20){
-                            SearchBar(
-                                text: $viewModel.state.searchText,
-                                placeholder: Localized.searchPlaceholder
-                            ) { newValue in
-                                viewModel.trigger(.searchChanged(newValue))
-                            }
-                            
-                            ScrollView(showsIndicators: false) {
-                                VStack(spacing: 20){
-                                    ForEach(viewModel.state.filteredStocks) { stock in
-                                        self.cellFor(stock)
-                                    }
-                                }
-                            }
-                        }
-                    } retryAction: {
-                        viewModel.trigger(.fetchStocks)
-                    }
-                }
-                .setPadding([.horizontal, .bottom], 20)
-                
+                stockListSection
             }
             .ignoresSafeArea()
             .task {
@@ -78,8 +20,71 @@ struct StockListView: View {
             }
         }
     }
+}
+
+// MARK: - Sections
+private extension StockListView {
+    var headerSection: some View {
+        ZStack {
+            Color.appMainColor
+            
+            VStack(spacing: 20) {
+                Text(Localized.totalInvestmentTitle)
+                    .textStyle(
+                        weight: .regular,
+                        size: 16,
+                        color: .appWhite
+                    )
+                
+                Text("$100,000.00")
+                    .textStyle(
+                        weight: .bold,
+                        size: 24,
+                        color: .appWhite
+                    )
+            }
+        }
+        .setFrame(height: 200)
+        .setCornerRadius(50, corners: [.bottomLeft, .bottomRight])
+    }
     
-    private func cellFor(_ stock: StockListem) -> some View {
+    var stockListSection: some View {
+        VStack(alignment:.leading){
+            Text(Localized.stockTitle)
+                .textStyle(
+                    weight: .bold,
+                    size: 24,
+                    color: .appBlack
+                )
+            
+            WithViewState(viewState: $viewModel.state.viewState,isRefreshable: true) {
+                VStack(spacing: 20){
+                    SearchBar(
+                        text: $viewModel.state.searchText,
+                        placeholder: Localized.searchPlaceholder
+                    ) { newValue in
+                        viewModel.trigger(.searchChanged(newValue))
+                    }
+                    
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 20){
+                            ForEach(viewModel.state.filteredStocks) { stock in
+                                self.cellFor(stock)
+                            }
+                        }
+                    }
+                }
+            } retryAction: {
+                viewModel.trigger(.fetchStocks)
+            }
+        }
+        .setPadding([.horizontal, .bottom], 20)
+    }
+}
+
+// MARK: - Components
+private extension StockListView {
+    func cellFor(_ stock: StockListem) -> some View {
         Button {
             viewModel.trigger(.didPressOnStock(stock))
         } label: {
@@ -103,7 +108,6 @@ struct StockListView: View {
                 
                 Spacer()
                 
-                
                 VStack(alignment: .trailing, spacing: 10) {
                     Text("\(stock.price)$")
                         .textStyle(
@@ -122,10 +126,10 @@ struct StockListView: View {
                 
             }
         }
-
     }
 }
 
+// MARK: - Preview
 #Preview {
     StockListView(
         viewModel: .init()

@@ -1,8 +1,3 @@
-//
-//  StockDetailsView.swift
-//  StockApp
-//
-
 import SwiftUI
 import BMSwiftUI
 
@@ -127,7 +122,7 @@ private extension StockDetailsView {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .center) {
                 Text(details.currency ?? "USD")
-                    .textStyle(weight: .bold, size: 16, color: .appSecondaryText)
+                    .textStyle(weight: .bold, size: 20, color: .appSecondaryText)
                 
                 Text("\(details.regularMarketPrice ?? 0, specifier: "%.2f")")
                     .textStyle(weight: .black, size: 30, color: .appTextColor)
@@ -140,12 +135,12 @@ private extension StockDetailsView {
                 
                 HStack(spacing: 4) {
                     Image(systemName: isPositive ? "arrow.up.right" : "arrow.down.right")
-                    Text("\(abs(change), specifier: "%.2f") (\(abs(percent), specifier: "%.2f")%)")
+                    Text("\(abs(change), specifier: "%.2f") \n(\(abs(percent), specifier: "%.2f")%)")
                 }
                 .textStyle(weight: .bold, size: 16, color: .white)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
-                .background(isPositive ? Color.appPrimaryColor : Color.reddishBrown)
+                .background(isPositive ? Color.forestGreen : Color.reddishBrown)
                 .setCornerRadius(8)
             }
             
@@ -264,6 +259,7 @@ private extension StockDetailsView {
     }
 }
 
+// MARK: - Preview
 #Preview {
     NavigationStack {
         StockDetailsView(viewModel: .init(symbol: "AAPL", stockName: "Apple"))

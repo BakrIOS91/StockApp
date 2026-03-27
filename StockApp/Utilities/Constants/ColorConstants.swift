@@ -20,7 +20,7 @@ extension Color {
     static let appBronze            = Color(hex: "#8E8E93")
     static let reddishBrown         = Color(hex: "#FF3B30")
     static let appDarkBrown         = Color(hex: "#2C2C2E")
-    static let appPrimaryColor      = Color(hex: "#34C759")
+    static let appPrimaryColor      = Color(hex: "#0da0f6")
     static let appGrayColor         = Color(hex: "#8E8E93")
     static let appOrangeColor       = Color(hex: "#FF9500")
     static let appBorderColor       = Color(hex: "#D1D1D6")
