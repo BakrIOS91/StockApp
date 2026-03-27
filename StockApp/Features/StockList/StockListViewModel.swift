@@ -45,9 +45,11 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
             }
             
         case .stockListResponse(let stream):
-            return .task { [weak self] in
+            return .cancellableTask(id: "stockListFetch") { @MainActor [weak self] in
                 guard let self else { return }
                 for await result in stream {
+                    if Task.isCancelled { break }
+                    
                     switch result {
                     case .success(let response):
                         if let stocks = response?.marketSummaryAndSparkResponse?.result, !stocks.isEmpty {
@@ -76,7 +78,7 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
             return .none
         case .didPressOnStock(let stock):
             state.stockDetailsViewModel = createStockDetailsViewModel(symbol: stock.symbol ?? "", stockName: stock.stockName)
-            return .none
+            return .cancelTask(id: "stockListFetch")
         }
     }
     

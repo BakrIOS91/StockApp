@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BakrIOS91/BMSwiftUI",
       "state" : {
-        "revision" : "2102ef1161a6642f34186e3f2298feeb1d10f33e",
-        "version" : "0.3.2"
+        "revision" : "2b9dd06a8285edba4a43b95ef8cc6611a6d7ba28",
+        "version" : "0.3.3"
       }
     },
     {

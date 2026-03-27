@@ -130,7 +130,7 @@ private extension StockDetailsView {
                     .textStyle(weight: .bold, size: 16, color: .appSecondaryText)
                 
                 Text("\(details.regularMarketPrice ?? 0, specifier: "%.2f")")
-                    .textStyle(weight: .black, size: 36, color: .appTextColor)
+                    .textStyle(weight: .black, size: 30, color: .appTextColor)
                 
                 Spacer()
                 
