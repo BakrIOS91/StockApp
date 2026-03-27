@@ -1,3 +1,10 @@
+//
+//  StockListView.swift
+//  StockApp
+//
+//  Created by Bakr Mohamed on 24/03/2026.
+//
+
 import SwiftUI
 import BMSwiftUI
 
@@ -90,20 +97,19 @@ private extension StockListView {
         } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(stock.symbol ?? "N/A")
+                    Text(stock.stockName)
                         .textStyle(
                             weight: .medium,
                             size: 20,
                             color: .appBlack
                         )
                     
-                    Text(stock.fullExchangeName ?? "N/A")
+                    Text(stock.symbol ?? "N/A")
                         .textStyle(
                             weight: .regular,
                             size: 18,
                             color: .appGrayColor
                         )
-                    
                 }
                 
                 Spacer()

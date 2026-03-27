@@ -1,6 +1,6 @@
 # Moneybase - Financial Intelligence App
 
-![Moneybase Logo](moneybase_logo.png)
+<img src="moneybase_logo.png" width="400" height="400" alt="Moneybase Logo"/>
 
 Moneybase is a modern, premium financial intelligence application built with **SwiftUI**. It provides real-time stock market data, detailed financial analytics, and comprehensive company overviews, empowered by a robust and scalable architecture.
 
@@ -24,7 +24,7 @@ Moneybase is built on a custom framework designed for reliability and developer 
 - **BaseViewModel Pattern**: Every view model inherits from a core `BaseViewModel`, ensuring consistent lifecycle management and state handling.
 - **ViewModelEffect**: A synchronous-to-asynchronous bridge that allows view models to handle side effects (like network calls) without exposing `async` complexity to the UI.
 - **Automatic Task Cancellation**: Integrated task management in `BaseViewModel` that automatically cancels redundant network requests when navigating between views, preventing memory leaks and high bandwidth usage.
-- **Dependency Injection**: A custom, environment-aware injection system that seamlessly switches between live services, mock data for testing, and preview values for SwiftUI Previews.
+- **Dependency Injection**: A custom, environment-aware injection system integrated into `BMSwiftUI`. It follows the same patterns as modern DI frameworks (like Swinject or SwiftUI's own Environment), allowing for seamless switching between live services, mock data for testing, and preview values. This satisfies the requirement for a professional DI approach while keeping the architecture unified.
 
 ## 🧪 Testing
 

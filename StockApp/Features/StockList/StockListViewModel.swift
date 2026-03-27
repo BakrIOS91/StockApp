@@ -1,3 +1,10 @@
+//
+//  StockListViewModel.swift
+//  StockApp
+//
+//  Created by Bakr Mohamed on 24/03/2026.
+//
+
 import Foundation
 import BMSwiftUI
 import BMSwiftNetworking
@@ -64,6 +71,7 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
                 state.filteredStocks = state.stocks
             } else {
                 state.filteredStocks = state.stocks.filter {
+                    $0.stockName.localizedCaseInsensitiveContains(text) ||
                     ($0.symbol?.localizedCaseInsensitiveContains(text) == true) ||
                     ($0.fullExchangeName?.localizedCaseInsensitiveContains(text) == true)
                 }
