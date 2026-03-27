@@ -22,7 +22,6 @@ struct StockDetailsViewModelTests {
         #expect(viewModel.state.stockName == "Apple Inc.")
         #expect(viewModel.state.viewState == .loading)
         #expect(viewModel.state.details == nil)
-        #expect(viewModel.state.descriptionMaxLines == 3)
     }
     
     @Test("Fetching stock details success updates state")
@@ -84,21 +83,5 @@ struct StockDetailsViewModelTests {
             
             #expect(viewModel.state.viewState == .noData)
         }
-    }
-    
-    @Test("Toggling description max lines updates the state")
-    func testToggleDescriptionMaxLines() {
-        let viewModel = StockDetailsViewModel(symbol: "AAPL", stockName: "Apple Inc.")
-        
-        // Initial state is 3
-        #expect(viewModel.state.descriptionMaxLines == 3)
-        
-        // Toggle to 0 (unlimited)
-        viewModel.trigger(.toggleDescriptionMaxLines)
-        #expect(viewModel.state.descriptionMaxLines == 0)
-        
-        // Toggle back to 3
-        viewModel.trigger(.toggleDescriptionMaxLines)
-        #expect(viewModel.state.descriptionMaxLines == 3)
     }
 }

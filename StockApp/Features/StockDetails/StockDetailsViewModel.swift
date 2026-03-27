@@ -1,3 +1,10 @@
+//
+//  StockDetailsViewModel.swift
+//  StockApp
+//
+//  Created by Bakr Mohamed on 27/03/2026.
+//
+
 import Foundation
 import BMSwiftUI
 import BMSwiftNetworking
@@ -13,14 +20,11 @@ final class StockDetailsViewModel: BaseViewModel<StockDetailsViewModel.State, St
         var stockName: String
         var viewState: ViewState = .loading
         var details: StockDetails?
-        var descriptionMaxLines = 3
-        
     }
     
     enum Action {
         case fetchStockDetails
         case stockDetailsResponse(Result<StockDetailsResponse?, APIError>)
-        case toggleDescriptionMaxLines
     }
     
     init(symbol: String, stockName: String){
@@ -50,9 +54,6 @@ final class StockDetailsViewModel: BaseViewModel<StockDetailsViewModel.State, St
                 self.state.viewState = .failHandler(error)
             }
             
-            return .none
-        case .toggleDescriptionMaxLines:
-            state.descriptionMaxLines = (state.descriptionMaxLines == 3) ? 0 : 3
             return .none
         }
     }
