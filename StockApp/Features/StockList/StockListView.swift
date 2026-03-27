@@ -12,71 +12,76 @@ struct StockListView: View {
     @Bindable var viewModel: StockListViewModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            ZStack {
-                Color.appBlack
-                
-                VStack(spacing: 20) {
-                    Text(Localized.totalInvestmentTitle)
-                        .textStyle(
-                            weight: .regular,
-                            size: 16,
-                            color: .appWhite
-                        )
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 20) {
+                ZStack {
+                    Color.appBlack
                     
-                    Text("$100,000.00")
+                    VStack(spacing: 20) {
+                        Text(Localized.totalInvestmentTitle)
+                            .textStyle(
+                                weight: .regular,
+                                size: 16,
+                                color: .appWhite
+                            )
+                        
+                        Text("$100,000.00")
+                            .textStyle(
+                                weight: .bold,
+                                size: 24,
+                                color: .appWhite
+                            )
+                    }
+                }
+                .setFrame(height: 200)
+                .setCornerRadius(50, corners: [.bottomLeft, .bottomRight])
+                
+                
+                VStack(alignment:.leading){
+                    Text(Localized.stockTitle)
                         .textStyle(
                             weight: .bold,
                             size: 24,
-                            color: .appWhite
+                            color: .appBlack
                         )
-                }
-            }
-            .setFrame(height: 200)
-            .setCornerRadius(50, corners: [.bottomLeft, .bottomRight])
-            
-            
-            VStack(alignment:.leading){
-                Text(Localized.stockTitle)
-                    .textStyle(
-                        weight: .bold,
-                        size: 24,
-                        color: .appBlack
-                    )
-                
-                WithViewState(viewState: $viewModel.state.viewState,isRefreshable: true) {
-                    VStack(spacing: 20){
-                        SearchBar(
-                            text: $viewModel.state.searchText,
-                            placeholder: Localized.searchPlaceholder
-                        ) { newValue in
-                            viewModel.trigger(.searchChanged(newValue))
-                        }
-                        
-                        ScrollView(showsIndicators: false) {
-                            VStack(spacing: 20){
-                                ForEach(viewModel.state.filteredStocks) { stock in
-                                    self.cellFor(stock)
+                    
+                    WithViewState(viewState: $viewModel.state.viewState,isRefreshable: true) {
+                        VStack(spacing: 20){
+                            SearchBar(
+                                text: $viewModel.state.searchText,
+                                placeholder: Localized.searchPlaceholder
+                            ) { newValue in
+                                viewModel.trigger(.searchChanged(newValue))
+                            }
+                            
+                            ScrollView(showsIndicators: false) {
+                                VStack(spacing: 20){
+                                    ForEach(viewModel.state.filteredStocks) { stock in
+                                        self.cellFor(stock)
+                                    }
                                 }
                             }
                         }
+                    } retryAction: {
+                        viewModel.trigger(.fetchStocks)
                     }
-                } retryAction: {
-                    viewModel.trigger(.fetchStocks)
                 }
+                .setPadding([.horizontal, .bottom], 20)
+                
             }
-            .setPadding([.horizontal, .bottom], 20)
-            
-        }
-        .ignoresSafeArea()
-        .task {
-            viewModel.trigger(.fetchStocks)
+            .ignoresSafeArea()
+            .task {
+                viewModel.trigger(.fetchStocks)
+            }
+            .navigationDestination(item: $viewModel.state.stockDetailsViewModel) {
+                StockDetailsView(viewModel: $0)
+            }
         }
     }
     
     private func cellFor(_ stock: StockListem) -> some View {
         Button {
-            viewModel.trigger(.fetchStocks)
+            viewModel.trigger(.didPressOnStock(stock))
         } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {

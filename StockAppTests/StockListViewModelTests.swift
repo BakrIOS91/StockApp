@@ -33,6 +33,8 @@ struct StockListViewModelTests {
                     continuation.yield(.success(StockList(marketSummaryAndSparkResponse: .init(result: mockStocks, error: nil))))
                     continuation.finish()
                 }
+            }, getStockDetails: { _ in
+                return .success(.mock)
             })
         } operation: {
             let viewModel = StockListViewModel()
@@ -76,7 +78,7 @@ struct StockListViewModelTests {
         let viewModel = StockListViewModel()
         
         viewModel.trigger(.didPressOnStock(mockStock))
-        #expect(viewModel.state.selectedStock?.symbol == mockStock.symbol)
+        #expect(viewModel.state.stockDetailsViewModel?.state.symbol == mockStock.symbol)
     }
     
     @Test("Fetching stocks failure updates viewState")
@@ -87,6 +89,8 @@ struct StockListViewModelTests {
                     continuation.yield(.failure(.noNetwork))
                     continuation.finish()
                 }
+            }, getStockDetails: { _ in
+                return .success(.mock)
             })
         } operation: {
             let viewModel = StockListViewModel()

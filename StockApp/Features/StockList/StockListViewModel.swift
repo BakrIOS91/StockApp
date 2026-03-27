@@ -20,7 +20,7 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
         var stocks: [StockListem] = []
         var searchText: String = ""
         var filteredStocks: [StockListem] = []
-        var selectedStock: StockListem?
+        var stockDetailsViewModel: StockDetailsViewModel?
     }
     
     enum Action {
@@ -75,8 +75,12 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
             }
             return .none
         case .didPressOnStock(let stock):
-            state.selectedStock = stock
+            state.stockDetailsViewModel = createStockDetailsViewModel(symbol: stock.symbol ?? "", stockName: stock.stockName)
             return .none
         }
+    }
+    
+    private func createStockDetailsViewModel(symbol: String, stockName: String) -> StockDetailsViewModel {
+        return StockDetailsViewModel(symbol: symbol,stockName: stockName)
     }
 }
