@@ -20,7 +20,7 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
         var stocks: [StockListem] = []
         var searchText: String = ""
         var filteredStocks: [StockListem] = []
-        var selectedStock: StockListem?
+        var stockDetailsViewModel: StockDetailsViewModel?
     }
     
     enum Action {
@@ -45,9 +45,11 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
             }
             
         case .stockListResponse(let stream):
-            return .task { [weak self] in
+            return .cancellableTask(id: "stockListFetch") { @MainActor [weak self] in
                 guard let self else { return }
                 for await result in stream {
+                    if Task.isCancelled { break }
+                    
                     switch result {
                     case .success(let response):
                         if let stocks = response?.marketSummaryAndSparkResponse?.result, !stocks.isEmpty {
@@ -69,14 +71,19 @@ final class StockListViewModel: BaseViewModel<StockListViewModel.State, StockLis
                 state.filteredStocks = state.stocks
             } else {
                 state.filteredStocks = state.stocks.filter {
+                    $0.stockName.localizedCaseInsensitiveContains(text) ||
                     ($0.symbol?.localizedCaseInsensitiveContains(text) == true) ||
                     ($0.fullExchangeName?.localizedCaseInsensitiveContains(text) == true)
                 }
             }
             return .none
         case .didPressOnStock(let stock):
-            state.selectedStock = stock
-            return .none
+            state.stockDetailsViewModel = createStockDetailsViewModel(symbol: stock.symbol ?? "", stockName: stock.stockName)
+            return .cancelTask(id: "stockListFetch")
         }
+    }
+    
+    private func createStockDetailsViewModel(symbol: String, stockName: String) -> StockDetailsViewModel {
+        return StockDetailsViewModel(symbol: symbol,stockName: stockName)
     }
 }

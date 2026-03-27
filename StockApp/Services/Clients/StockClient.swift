@@ -10,6 +10,7 @@ import BMSwiftUI
 
 struct StockClient {
     var getStocks: () async -> AsyncStream<Result<StockList?, APIError>>
+    var getStockDetails: (String) async -> Result<StockDetailsResponse?, APIError>
 }
 
 extension DependencyValues {
@@ -24,6 +25,9 @@ extension StockClient: DependencyKey {
         .init(
            getStocks: {
                GetStockList().performResultStream(repeatingEverySeconds: 8)
+           },
+           getStockDetails: { symbol in
+               return await GetStockDetails(request: .init(symbol: symbol)).performResult()
            }
         )
     }
@@ -34,6 +38,9 @@ extension StockClient: DependencyKey {
                 AsyncStream { 
                     return .success(.mock)
                 }
+            },
+            getStockDetails: { _ in
+                return  .success(.mock)
             }
         )
     }
@@ -44,6 +51,9 @@ extension StockClient: DependencyKey {
                 AsyncStream { 
                     return .success(.mock)
                 }
+            },
+            getStockDetails: { _ in
+                return .success(.mock)
             }
         )
     }
@@ -54,6 +64,9 @@ extension StockClient: DependencyKey {
                 AsyncStream { 
                     .failure(.noNetwork)
                 }
+            },
+            getStockDetails: { _ in
+                return .failure(.noNetwork)
             }
         )
     }
@@ -64,6 +77,9 @@ extension StockClient: DependencyKey {
                 AsyncStream { 
                     return .success(nil)
                 }
+            },
+            getStockDetails: { _ in
+                return .success(nil)
             }
         )
     }
@@ -74,6 +90,9 @@ extension StockClient: DependencyKey {
                 AsyncStream {
                     return .failure(.dataConversionFailed)
                 }
+            },
+            getStockDetails: { _ in
+                return .failure(.dataConversionFailed)
             }
         )
     }

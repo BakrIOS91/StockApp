@@ -11,7 +11,7 @@ struct GetStockList: ModelTargetType {
     
     var baseURL: String { return AppTarget.shared.kBaseURL }
     
-    var requestPath: String { return "market/v2/get-summary" }
+    var requestPath: String { return "get-summary" }
     
     var requestMethod: BMSwiftNetworking.HTTPMethod { return .GET }
         
@@ -26,4 +26,28 @@ struct GetStockList: ModelTargetType {
     
     var mockResponse: StockList? { return StockList.mock }
     
+}
+
+
+struct GetStockDetails: ModelTargetType {
+    typealias Response = StockDetailsResponse?
+    
+    var request: StockRequestModel
+    
+    var baseURL: String { return AppTarget.shared.kBaseURL }
+    
+    var requestPath: String { return "get-quotes" }
+    
+    var requestMethod: BMSwiftNetworking.HTTPMethod { return .GET }
+    
+    var requestTask: RequestTask {
+        .parameters([
+            "symbols": request.symbol,
+            "region": request.region
+        ])
+    }
+    
+    init(request: StockRequestModel) {
+        self.request = request
+    }
 }

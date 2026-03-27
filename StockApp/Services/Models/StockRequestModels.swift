@@ -6,14 +6,14 @@
 //
 
 struct StockRequestModel {
-    var symbol: String?
-    var region: String?
+    var symbol: String
+    var region: String
     
     enum CodingKeys: String, CodingKey {
         case symbol, region
     }
     
-    init(symbol: String? = nil, region: String? = "US") {
+    init(symbol: String, region: String = "US") {
         self.symbol = symbol
         self.region = region
     }

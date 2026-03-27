@@ -10,8 +10,10 @@
 		3C14C4D92F72F40D0067FA43 /* LoaderUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C14C4D82F72F40D0067FA43 /* LoaderUI */; };
 		3C278A3E2F75B27000EA653A /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A3D2F75B27000EA653A /* BMSwiftNetworking */; };
 		3C278A412F75BB8100EA653A /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A402F75BB8100EA653A /* BMSwiftUI */; };
-		3C278A462F75C21300EA653A /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A452F75C21300EA653A /* BMSwiftNetworking */; };
-		3C278A492F75C22600EA653A /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C278A482F75C22600EA653A /* BMSwiftUI */; };
+		3CDDC2E42F76B3A100546039 /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDDC2E32F76B3A100546039 /* BMSwiftNetworking */; };
+		3CDDC2E82F76B40900546039 /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDDC2E72F76B40900546039 /* BMSwiftUI */; };
+		3CDDC2EB2F76B68700546039 /* BMSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDDC2EA2F76B68700546039 /* BMSwiftNetworking */; };
+		3CDDC2EE2F76B69500546039 /* BMSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDDC2ED2F76B69500546039 /* BMSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,9 +63,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C278A3E2F75B27000EA653A /* BMSwiftNetworking in Frameworks */,
-				3C278A462F75C21300EA653A /* BMSwiftNetworking in Frameworks */,
+				3CDDC2EE2F76B69500546039 /* BMSwiftUI in Frameworks */,
+				3CDDC2EB2F76B68700546039 /* BMSwiftNetworking in Frameworks */,
+				3CDDC2E42F76B3A100546039 /* BMSwiftNetworking in Frameworks */,
 				3C278A412F75BB8100EA653A /* BMSwiftUI in Frameworks */,
-				3C278A492F75C22600EA653A /* BMSwiftUI in Frameworks */,
+				3CDDC2E82F76B40900546039 /* BMSwiftUI in Frameworks */,
 				3C14C4D92F72F40D0067FA43 /* LoaderUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,8 +123,10 @@
 				3C14C4D82F72F40D0067FA43 /* LoaderUI */,
 				3C278A3D2F75B27000EA653A /* BMSwiftNetworking */,
 				3C278A402F75BB8100EA653A /* BMSwiftUI */,
-				3C278A452F75C21300EA653A /* BMSwiftNetworking */,
-				3C278A482F75C22600EA653A /* BMSwiftUI */,
+				3CDDC2E32F76B3A100546039 /* BMSwiftNetworking */,
+				3CDDC2E72F76B40900546039 /* BMSwiftUI */,
+				3CDDC2EA2F76B68700546039 /* BMSwiftNetworking */,
+				3CDDC2ED2F76B69500546039 /* BMSwiftUI */,
 			);
 			productName = StockApp;
 			productReference = 3CE92BD72F72C6F100B05D1D /* StockApp.app */;
@@ -179,8 +185,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3C14C4D72F72F40D0067FA43 /* XCRemoteSwiftPackageReference "LoaderUI" */,
-				3C278A442F75C21300EA653A /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */,
-				3C278A472F75C22600EA653A /* XCRemoteSwiftPackageReference "BMSwiftUI" */,
+				3CDDC2E92F76B68700546039 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */,
+				3CDDC2EC2F76B69500546039 /* XCRemoteSwiftPackageReference "BMSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3CE92BD82F72C6F100B05D1D /* Products */;
@@ -539,7 +545,7 @@
 				minimumVersion = 0.2.1;
 			};
 		};
-		3C278A442F75C21300EA653A /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */ = {
+		3CDDC2E92F76B68700546039 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BakrIOS91/BMSwiftNetworking";
 			requirement = {
@@ -547,12 +553,12 @@
 				minimumVersion = 0.2.4;
 			};
 		};
-		3C278A472F75C22600EA653A /* XCRemoteSwiftPackageReference "BMSwiftUI" */ = {
+		3CDDC2EC2F76B69500546039 /* XCRemoteSwiftPackageReference "BMSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BakrIOS91/BMSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.2;
+				minimumVersion = 0.3.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -571,14 +577,22 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = BMSwiftUI;
 		};
-		3C278A452F75C21300EA653A /* BMSwiftNetworking */ = {
+		3CDDC2E32F76B3A100546039 /* BMSwiftNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3C278A442F75C21300EA653A /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */;
 			productName = BMSwiftNetworking;
 		};
-		3C278A482F75C22600EA653A /* BMSwiftUI */ = {
+		3CDDC2E72F76B40900546039 /* BMSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3C278A472F75C22600EA653A /* XCRemoteSwiftPackageReference "BMSwiftUI" */;
+			productName = BMSwiftUI;
+		};
+		3CDDC2EA2F76B68700546039 /* BMSwiftNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CDDC2E92F76B68700546039 /* XCRemoteSwiftPackageReference "BMSwiftNetworking" */;
+			productName = BMSwiftNetworking;
+		};
+		3CDDC2ED2F76B69500546039 /* BMSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CDDC2EC2F76B69500546039 /* XCRemoteSwiftPackageReference "BMSwiftUI" */;
 			productName = BMSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */

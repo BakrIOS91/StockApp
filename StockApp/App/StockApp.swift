@@ -9,7 +9,7 @@ import SwiftUI
 import BMSwiftNetworking
 
 @main
-struct StockApp: App {
+struct MoneybaseApp: App {
     
     init () {
         NetworkMonitor.shared.startMonitoring()

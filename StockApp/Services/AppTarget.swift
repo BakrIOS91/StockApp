@@ -16,6 +16,10 @@ struct AppTarget: Target {
         return AppEnvironments.apiHost
     }
     
+    var kMainAPIPath: String? {
+        return "market/v2/"
+    }
+    
     var kAppScheme: String{
         return "https"
     }
