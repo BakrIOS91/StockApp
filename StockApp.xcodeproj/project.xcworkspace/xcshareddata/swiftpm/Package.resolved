@@ -1,0 +1,42 @@
+{
+  "originHash" : "a156a24d22c37ef1f889ab83a9522f31a17217d2c1a070f4f9a4c08c1adc3a33",
+  "pins" : [
+    {
+      "identity" : "bmswiftnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BakrIOS91/BMSwiftNetworking",
+      "state" : {
+        "revision" : "231e2e1b4ea1d6f843b222efee574f12669fef22",
+        "version" : "0.2.4"
+      }
+    },
+    {
+      "identity" : "bmswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BakrIOS91/BMSwiftUI",
+      "state" : {
+        "revision" : "2b9dd06a8285edba4a43b95ef8cc6611a6d7ba28",
+        "version" : "0.3.3"
+      }
+    },
+    {
+      "identity" : "loaderui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ninjaprox/LoaderUI",
+      "state" : {
+        "revision" : "1b8ad2dfb06080ffcc51a74da0aeba56a0f7b877",
+        "version" : "0.2.1"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
+        "version" : "509.1.1"
+      }
+    }
+  ],
+  "version" : 3
+}
